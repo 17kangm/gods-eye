@@ -260,7 +260,7 @@ test('Radio is nested inside Context with separate disclosure and power controls
   assert.match(ui, /tunerPreview\(\{ coordinate: this\._radioTunerCoordinate, rotate: commit \}\)/);
   assert.match(ui, /radioLayer\.cancelTuning\(\)/);
   assert.match(ui, /classList\.remove\('radio-broadcasting'\)/);
-  assert.match(ui, /radioLayer\.getTunerStations\(750\)/);
+  assert.match(ui, /radioLayer\.getTunerStations\(1500\)/);
   assert.match(ui, /radioTunerPointerPosition\(/);
   assert.doesNotMatch(css, /#right-context-rail\s*>\s*#radio-panel/);
   assert.match(css, /#global-context-panel #radio-panel\.collapsed/);

@@ -5412,7 +5412,7 @@ export class StyleManager {
     const refreshTunerBand = ({ force = false } = {}) => {
       if (this._radioTunerDragging || this._radioTuner?.hidden || this._radioTunerSlider?.disabled) return false;
       const selectedId = this._radioState?.selected?.id || null;
-      const pool = radioLayer.getTunerStations(750);
+      const pool = radioLayer.getTunerStations(1500);
       const poolSignature = pool.map((station) => station.id).join('|');
       const currentPoolSignature = this._radioTunerPool.map((station) => station.id).join('|');
       if (!force && poolSignature === currentPoolSignature && selectedId === this._radioTunerSelectedId) return false;

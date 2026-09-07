@@ -374,8 +374,8 @@ test('catalog generations advance only after healthy admission and survive degra
   assert.notEqual(recovered.stations[0].id, first.stations[0].id);
 });
 
-test('catalog response is hard-capped at 750 normalized stations', async () => {
-  const rows = Array.from({ length: 810 }, (_, index) => station({
+test('catalog response is hard-capped at 1500 normalized stations', async () => {
+  const rows = Array.from({ length: 1560 }, (_, index) => station({
     stationuuid: `00000000-0000-4000-8000-${index.toString(16).padStart(12, '0')}`,
     name: `Station ${index}`,
     geo_lat: -70 + (index % 140),
@@ -389,7 +389,7 @@ test('catalog response is hard-capped at 750 normalized stations', async () => {
   });
   const result = await invoke(middleware, '/stations');
   assert.equal(result.status, 200);
-  assert.equal(JSON.parse(result.body).stations.length, 750);
+  assert.equal(JSON.parse(result.body).stations.length, 1500);
 });
 
 test('resolved Radio Browser addresses reject local, private, link-local, metadata, and IPv6-local forms', () => {

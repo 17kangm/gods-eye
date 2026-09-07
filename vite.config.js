@@ -799,9 +799,13 @@ const RADIO_DIRECTORY_STALE_MS = 7 * 24 * 60 * 60 * 1000;
 const RADIO_MIRROR_CACHE_MS = 6 * 60 * 60 * 1000;
 const RADIO_FETCH_TIMEOUT_MS = 12_000;
 const RADIO_RESPONSE_MAX_BYTES = 4 * 1024 * 1024;
-const RADIO_DIRECTORY_LIMIT = 750;
+const RADIO_DIRECTORY_LIMIT = 1500;
 const RADIO_CATALOG_MIN_SUCCESSFUL_QUERIES = 5;
-const RADIO_CATALOG_HEALTHY_MIN_STATIONS = Math.ceil(RADIO_DIRECTORY_LIMIT / 2);
+// Held independent of RADIO_DIRECTORY_LIMIT (not simply half of it): this is the
+// minimum real coverage that counts as a healthy refresh, and raising the cap on
+// how large the catalog is *allowed* to grow shouldn't also raise the bar for
+// what counts as acceptable upstream coverage.
+const RADIO_CATALOG_HEALTHY_MIN_STATIONS = 375;
 const RADIO_USER_AGENT = 'GodsEyeView/1.0 (Radio Browser directory client)';
 const RADIO_UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const RADIO_FALLBACK_MIRRORS = Object.freeze([
